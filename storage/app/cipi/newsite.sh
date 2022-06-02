@@ -33,6 +33,10 @@ while [ -n "$1" ] ; do
         shift
         DBROOT=$1
         ;;
+    -d | --domain )
+        shift
+        DOMAIN=$1
+        ;;
     -r | --remote )
         shift
         REMOTE=$1
@@ -90,6 +94,64 @@ EOF
 sudo mkdir /home/$USER_NAME/.cache
 sudo mkdir /home/$USER_NAME/git
 sudo cp /etc/cipi/github /home/$USER_NAME/git/deploy
+
+
+sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/.cache
+sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/git
+sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/web
+
+# Multitenant Install
+FOLDER_PATH="/home/$USER_NAME/web"
+MULTITENANT_PATH=/home/wp-multitenant
+
+DATABASE_USER="$USER_NAME"
+DATABASE_PASS="$DBPASS"
+
+DOMAIN_NAME="$DOMAIN"
+TABLE_PREFIX=wp_
+
+
+sudo rm -rfv /home/$USER_NAME/web/{*,.*}
+
+# Make site directory
+sudo mkdir $FOLDER_PATH/wp-content
+sudo mkdir $FOLDER_PATH/wp-content/uploads
+
+# Create htaccess symlinks
+sudo ln -s $MULTITENANT_PATH/config/.htaccess-standard $FOLDER_PATH/.htaccess
+
+# Create symlinks
+sudo ln -s $MULTITENANT_PATH/config/wp-cli.yml $FOLDER_PATH/wp-cli.yml
+sudo ln -s $MULTITENANT_PATH/app/stable $FOLDER_PATH/wp
+sudo ln -s $MULTITENANT_PATH/assets/drop-ins/object-cache.php $FOLDER_PATH/wp-content/object-cache.php
+sudo ln -s $MULTITENANT_PATH/assets/mu-plugins $FOLDER_PATH/wp-content/mu-plugins
+sudo ln -s $MULTITENANT_PATH/assets/plugins $FOLDER_PATH/wp-content/plugins
+sudo ln -s $MULTITENANT_PATH/assets/themes $FOLDER_PATH/wp-content/themes
+sudo ln -s $MULTITENANT_PATH/config/wp-env.php $FOLDER_PATH/wp-env.php
+
+# Copy install files
+sudo cp $MULTITENANT_PATH/_install-files/index.php $FOLDER_PATH
+sudo cp $MULTITENANT_PATH/_install-files/wp-config.php $FOLDER_PATH
+sudo cp $MULTITENANT_PATH/_install-files/site-config.php $FOLDER_PATH/site-config-temp.php
+
+
+# Modifying site-config
+    sudo sed \
+        -e "s/full_site_path//g" \
+        -e "s/database_name/${USER_NAME}/g" \
+        -e "s/database_user/${USER_NAME}/g" \
+        -e "s/database_password/${DBPASS}/g" \
+        -e "s/wp_table_prefix/${TABLE_PREFIX}/g" \
+        -e "s/domain_name/${DOMAIN_NAME}/g" \
+        $FOLDER_PATH/site-config-temp.php > $FOLDER_PATH/site-config.php
+        sudo rm $FOLDER_PATH/site-config-temp.php
+
+# Generate WP Salts
+    sudo curl -L https://api.wordpress.org/secret-key/1.1/salt/ >> $FOLDER_PATH/wp-salts-temp.php
+    sudo sed '1s/^/<?php\n/' $FOLDER_PATH/wp-salts-temp.php > $FOLDER_PATH/wp-salts.php
+    rm $FOLDER_PATH/wp-salts-temp.php
+
+
 
 sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/.cache
 sudo chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/git
