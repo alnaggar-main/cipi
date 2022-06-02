@@ -1,10 +1,10 @@
-<img src="https://github.com/andreapollastri/cipi/blob/master/utility/design/banner.png?raw=true">
+<img src="https://github.com/alnaggar-main/cipi/blob/master/utility/design/banner.png?raw=true">
 
-![GitHub stars](https://img.shields.io/github/stars/andreapollastri/cipi?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/andreapollastri/cipi?style=social)
-![GitHub issues](https://img.shields.io/github/issues/andreapollastri/cipi)
-![GitHub](https://img.shields.io/github/license/andreapollastri/cipi)
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/andreapollastri/cipi?label=version)
+![GitHub stars](https://img.shields.io/github/stars/alnaggar-main/cipi?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/alnaggar-main/cipi?style=social)
+![GitHub issues](https://img.shields.io/github/issues/alnaggar-main/cipi)
+![GitHub](https://img.shields.io/github/license/alnaggar-main/cipi)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/alnaggar-main/cipi?label=version)
 
 ## About
 Cipi is a Laravel based cloud server control panel that supports Digital Ocean, AWS, Vultr, Google Cloud, Linode, Azure and other VPS. It comes with nginx, Mysql, multi PHP-FPM versions, multi users, Supervisor, Composer, npm, free Let's Encrypt certificates, Git deployment, backups, ffmpeg, fail2ban, Redis, API and with a simple graphical interface useful to manage Laravel, Codeigniter, Symfony, WordPress or other PHP applications. With Cipi you don’t need to be a Sys Admin to deploy and manage websites and PHP applications powered by cloud VPS.
@@ -101,7 +101,7 @@ Thank you for considering contributing to the Cipi Project (code, issues, feedba
 Cipi is an open-source software licensed under the MIT license.
 
 ## Need support with Cipi?
-Please open an issue here: https://github.com/andreapollastri/cipi/issues.
+Please open an issue here: https://github.com/alnaggar-main/cipi/issues.
 
 ## Write to Cipi
 Write an email to: hello@cipi.sh
