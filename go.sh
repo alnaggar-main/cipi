@@ -284,6 +284,8 @@ sudo apt-get -y install php7.4-imagick
 sudo apt-get -y install php7.4-fileinfo
 sudo apt-get -y install php7.4-imap
 sudo apt-get -y install php7.4-cli
+sudo apt-get -y install php7.4-igbinary
+sudo apt-get -y install php7.4-zstd
 PHPINI=/etc/php/7.4/fpm/conf.d/cipi.ini
 sudo touch $PHPINI
 sudo cat > "$PHPINI" <<EOF
@@ -316,6 +318,8 @@ sudo apt-get -y install php8.0-imagick
 sudo apt-get -y install php8.0-fileinfo
 sudo apt-get -y install php8.0-imap
 sudo apt-get -y install php8.0-cli
+sudo apt-get -y install php8.0-igbinary
+sudo apt-get -y install php8.0-zstd
 PHPINI=/etc/php/8.0/fpm/conf.d/cipi.ini
 sudo touch $PHPINI
 sudo cat > "$PHPINI" <<EOF
@@ -348,6 +352,8 @@ sudo apt-get -y install php8.1-imagick
 sudo apt-get -y install php8.1-fileinfo
 sudo apt-get -y install php8.1-imap
 sudo apt-get -y install php8.1-cli
+sudo apt-get -y install php8.1-igbinary
+sudo apt-get -y install php8.1-zstd
 PHPINI=/etc/php/8.1/fpm/conf.d/cipi.ini
 sudo touch $PHPINI
 sudo cat > "$PHPINI" <<EOF
