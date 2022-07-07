@@ -50,6 +50,13 @@
                 </div>
                 <div class="modal-body">
                     <div id="newsiteform">
+                        <!-- Manual ID request START -->
+                        <label for="newsiteid">{{ __('cipi.site_id') }}</label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" id="newsiteid" placeholder="e.g. 12345678" autocomplete="off" />
+                        </div>
+                        <div class="space"></div>
+                        <!-- Manual ID request END -->
                         <label for="newsitedomain">{{ __('cipi.site_domain') }}</label>
                         <div class="input-group">
                             <input class="form-control" type="text" id="newsitedomain" placeholder="e.g. domain.ltd" autocomplete="off" />
@@ -64,8 +71,8 @@
                         <div class="input-group">
                             <select class="form-control" id="newsitephp">
                                 <option value="8.1">8.1</option>
-                                <option value="8.0" selected>8.0</option>
-                                <option value="7.4">7.4</option>
+                                <option value="8.0">8.0</option>
+                                <option value="7.4" selected>7.4</option>
                             </select>
                         </div>
                         <div class="space"></div>
@@ -319,6 +326,9 @@
                 contentType: 'application/json',
                 dataType: 'json',
                 data: JSON.stringify({
+                    // -- Manual ID request START -->
+                    'site_id':  $('#newsiteid').val(),
+                    // -- Manual ID request END -->
                     'domain':   $('#newsitedomain').val(),
                     'server_id':$('#newsiteserver').val(),
                     'php':      $('#newsitephp').val(),

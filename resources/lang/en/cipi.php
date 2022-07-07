@@ -164,6 +164,7 @@ return [
     // Sites
     'site' => 'Site',
     'sites' => 'Sites',
+    'site_id' => 'Site ID',
     'domain' => 'Domain',
     'aliases' => 'Aliases',
     'new_site_modal_title' => 'Add a New Site',
